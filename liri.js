@@ -40,6 +40,19 @@ function concertThis(artist) {
                 console.log('---------------------------------------------------------------');
             };
         };
+
+        //Adding to Log.txt
+        var logged = command + ", " + entry + ", "; 
+        fs.appendFile("log.txt", logged, function (err) {
+
+            // If an error was experienced we will log it.
+            if (err) {
+                console.log(err);
+            };
+
+        });
+
+        console.log("You have logged: " + entry);
     });
 };
 
@@ -56,7 +69,7 @@ function spotifyThis(song) {
     spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
-        }
+        };
 
         for (var i = 0; i < data.tracks.items.length; i++) {
 
@@ -69,7 +82,19 @@ function spotifyThis(song) {
             //album name
             console.log("Album: " + data.tracks.items[i].album.name);
             console.log('---------------------------------------------------------------');
-        }
+        };
+
+        //Adding to Log.txt
+        var logged = command + ", " + entry + ", ";
+        fs.appendFile("log.txt", logged, function (err) {
+
+            // If an error was experienced we will log it.
+            if (err) {
+                console.log(err);
+            };
+
+        });
+        console.log("You have logged: " + entry);
     });
 };
 
@@ -102,7 +127,20 @@ function movieThis(movieName) {
             //Movie Cast
             console.log("Cast: " + JSON.parse(body).Actors);
             console.log('---------------------------------------------------------------');
-        }
+        };
+
+        //Adding to Log.txt
+        var logged = command + ", " + entry + ", ";
+        fs.appendFile("log.txt", logged, function (err) {
+
+            // If an error was experienced we will log it.
+            if (err) {
+                console.log(err);
+            }
+
+        });
+
+        console.log("You have logged: " + entry);
     });
 };
 
